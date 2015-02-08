@@ -378,7 +378,7 @@ func (x *Int) Cmp(y *Int) (r int) {
 }
 
 // string returns z in the base given
-func (z *Int) string(base int) string {
+func (z *Int) InBase(base int) string {
 	if z == nil {
 		return "<nil>"
 	}
@@ -391,7 +391,7 @@ func (z *Int) string(base int) string {
 
 // String returns the decimal representation of z.
 func (z *Int) String() string {
-	return z.string(10)
+	return z.InBase(10)
 }
 
 // Convert rune into base
@@ -473,7 +473,7 @@ func (x *Int) Format(s fmt.State, ch rune) {
 	}
 
 	// determine digits with base set by len(cs) and digit characters from cs
-	digits := x.string(base)
+	digits := x.InBase(base)
 	if digits[0] == '-' {
 		digits = digits[1:]
 	}

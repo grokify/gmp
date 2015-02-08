@@ -587,13 +587,13 @@ func (x *Rat) FloatString(prec int) string {
 		}
 	}
 
-	s := q.string(10)
+	s := q.InBase(10)
 	if x.Sign() < 0 {
 		s = "-" + s
 	}
 
 	if prec > 0 {
-		rs := r.string(10)
+		rs := r.InBase(10)
 		leadingZeros := prec - len(rs)
 		s += "." + strings.Repeat("0", leadingZeros) + rs
 	}
